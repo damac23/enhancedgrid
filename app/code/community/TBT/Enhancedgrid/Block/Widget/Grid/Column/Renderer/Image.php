@@ -101,7 +101,8 @@ class TBT_Enhancedgrid_Block_Widget_Grid_Column_Renderer_Image extends Mage_Admi
         }
         
         if(self::$showByDefault && !empty($val2) ) {
-            $out .= "<img src=". $url ." width='". self::$width ."' ";
+            $grid_img = (string)Mage::helper('catalog/image')->init(Mage::getModel('catalog/product')->load($row->getId()), 'image')->resize(self::$width, self::$height);
+            $out .= "<img src=". $grid_img ." width='". self::$width ."' ";
             if(self::$height > self::$width) {
                 $out .= "height='". self::$height ."' ";
             }
